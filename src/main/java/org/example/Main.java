@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -32,15 +29,31 @@ public class Main {
     public static boolean checkSpecificNumber(List<Integer> integerArr, int x) {
         return integerArr.contains(x);
     }
+
     // Метод к задаче 4.
     public static void getIndexOfSpecificNumber(int[] intArr, int x) {
         for (int i = 0; i < intArr.length; i++) {
-            if(intArr[i] == x) {
+            if (intArr[i] == x) {
                 System.out.print(i + " ");
             }
         }
+        System.out.println();
     }
 
+    // Метод к задаче 5.
+    public static List<Integer> getArray(List<Integer> listForFithTask, int start, int end) {
+        List<Integer> result = new ArrayList<>();
+        for(int i = start; i <= end; i++) {
+            result.add(listForFithTask.get(i));
+        }
+        return result;
+    }
+
+    // Метод к задаче 6.
+    public static void getMinAndMax(List<Integer> listForFithTask) {
+        System.out.println("Min element: " + Collections.max(listForFithTask));
+        System.out.println("Max element: " + Collections.min(listForFithTask));
+    }
 
 
     public static void main(String[] args) {
@@ -56,6 +69,13 @@ public class Main {
         integerArr.add(5);
         integerArr.add(6);
 
+        List<Integer> listForFithTask = new ArrayList<>();
+        listForFithTask.add(10);
+        listForFithTask.add(50);
+        listForFithTask.add(60);
+        listForFithTask.add(70);
+        listForFithTask.add(80);
+
         // Задача 1.
         double firstResult = getMean(intArray);
         System.out.println(firstResult); // 3.25
@@ -66,6 +86,11 @@ public class Main {
         boolean thirdResult = checkSpecificNumber(integerArr, 6);
         System.out.println(thirdResult);
         // Задача 4.
-        getIndexOfSpecificNumber(intArray, 2);
+        getIndexOfSpecificNumber(intArray, 2); // вывод 1, 4 потому что в массиве 2 таких числа.
+        // Задача 5.
+        List<Integer> fifthResult = getArray(listForFithTask, 1, 3); //[50, 60, 70]
+        System.out.println(fifthResult);
+        // Задача 6.
+        getMinAndMax(listForFithTask);
     }
 }
