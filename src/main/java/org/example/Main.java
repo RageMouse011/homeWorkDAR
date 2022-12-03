@@ -51,8 +51,24 @@ public class Main {
 
     // Метод к задаче 6.
     public static void getMinAndMax(List<Integer> listForFithTask) {
-        System.out.println("Min element: " + Collections.max(listForFithTask));
-        System.out.println("Max element: " + Collections.min(listForFithTask));
+        System.out.println("Min element: " + Collections.min(listForFithTask));
+        System.out.println("Max element: " + Collections.max(listForFithTask));
+    }
+
+    // Метод к задаче 7.
+    public static void getTwoMin(List<Integer> listForFithTask) {
+        System.out.println("First min element: " + Collections.min(listForFithTask));
+        listForFithTask.remove(Collections.min(listForFithTask));
+        System.out.println("Second min element: " + Collections.min(listForFithTask));
+    }
+    // Метод к задаче 8.
+    public static StringBuilder getConcantinationOfCollectionNumbers(List<Integer> listForFithTask) {
+        StringBuilder result = new StringBuilder("Вывод: ");
+        listForFithTask.sort(Comparator.reverseOrder());
+        for (Integer integer : listForFithTask) {
+            result.append(integer);
+        }
+        return result;
     }
 
 
@@ -91,6 +107,12 @@ public class Main {
         List<Integer> fifthResult = getArray(listForFithTask, 1, 3); //[50, 60, 70]
         System.out.println(fifthResult);
         // Задача 6.
-        getMinAndMax(listForFithTask);
+        getMinAndMax(listForFithTask); // Min element: 10, Max element: 80
+        // Задача 7.
+        getTwoMin(listForFithTask); // First min element: 10, Second min element: 50
+        // Задача 8.
+        String eightResult = String.valueOf(getConcantinationOfCollectionNumbers(listForFithTask));
+        System.out.println(eightResult); // Вывод: 80706050 В результате нету элемента 10, потому-что он был удален в методе 7.
+
     }
 }
