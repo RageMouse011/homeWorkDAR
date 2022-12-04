@@ -1,199 +1,83 @@
 package org.example;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
-
     // Метод к задаче 1.
-    public static double getMean(int[] intArr) {
-        double mean = 0;
-        for (int j : intArr) {
-            mean += j;
-        }
-        mean /= intArr.length;
-        return mean;
+    public static int getMinValue(int a, int b, int c) {
+        int result = Math.min(a, b);
+        return Math.min(result, c);
     }
-
     // Метод к задаче 2.
-    public static Set<Integer> getDuplicates(List<Integer> integerArr) {
-        Set<Integer> duplicates = new HashSet<>();
-        return integerArr.stream().filter(e -> !duplicates.add(e)).collect(Collectors.toSet());
-        /* stream() создает поток. filter() - вовзращает поток состоящий из элементов потока подходяего данному условию.
-        В данном случае берется элемент (e), и проверяется на наличие дубликатов. и далее collector() - преобразует
-        поток в коллекцию.
-        */
+    public static double getAvg(int a, int b, int c) {
+        return (a + b + c) / 3;
     }
-
     // Метод к задаче 3.
-    public static boolean checkSpecificNumber(List<Integer> integerArr, int x) {
-        return integerArr.contains(x);
-    }
+    public static int getCountOfVowel(String str) { // Используется java.util.regex package.
+        Pattern vowels = Pattern.compile("(?iu)[аеёиоуыэюя]"); // таким же образом можно добавить латинские символы.
 
+        Matcher m = vowels.matcher(str);
+        int vowelsCounter = 0;
+        while (m.find()) {
+            vowelsCounter++;
+        }
+        return vowelsCounter;
+    }
     // Метод к задаче 4.
-    public static void getIndexOfSpecificNumber(int[] intArr, int x) {
-        for (int i = 0; i < intArr.length; i++) {
-            if (intArr[i] == x) {
-                System.out.print(i + " ");
+    public static int getCountOfWords(String str) {
+        int count = 0;
+        if (str.length() != 0) {
+            count++;
+            for (int i = 0; i < str.length(); i++) {
+                if(str.charAt(i) == ' ') {
+                    count ++;
+                }
             }
         }
-        System.out.println();
+        return count;
     }
-
     // Метод к задаче 5.
-    public static List<Integer> getArray(List<Integer> listForFifthTask, int start, int end) {
-        List<Integer> result = new ArrayList<>();
-        for(int i = start; i <= end; i++) {
-            result.add(listForFifthTask.get(i));
+    public static int getCountOfSpecificNumber(Integer value, char specificValue) {
+        int count = 0;
+        if (value.toString().length() != 0) {
+            for (int i = 0; i < value.toString().length(); i++) {
+                if(value.toString().charAt(i) ==  specificValue) {
+                    count++;
+                }
+            }
         }
-        return result;
+        System.out.println(count);
+        return count;
     }
-
     // Метод к задаче 6.
-    public static void getMinAndMax(List<Integer> listForFifthTask) {
-        System.out.println("Min element: " + Collections.min(listForFifthTask));
-        System.out.println("Max element: " + Collections.max(listForFifthTask));
+    public static double getSquareOfRegularPentagon(int lengthOfSide) {
+        return Math.pow(lengthOfSide, 2) / 4 * Math.sqrt(25 + 10 * Math.sqrt(5));
     }
-
     // Метод к задаче 7.
-    public static void getTwoMin(List<Integer> listForFifthTask) {
-        System.out.println("First min element: " + Collections.min(listForFifthTask));
-        listForFifthTask.remove(Collections.min(listForFifthTask));
-        System.out.println("Second min element: " + Collections.min(listForFifthTask));
-    }
-    // Метод к задаче 8.
-    public static StringBuilder getConcatenationOfCollectionNumbers(List<Integer> listForFifthTask) {
-        StringBuilder result = new StringBuilder("Вывод: ");
-        listForFifthTask.sort(Comparator.reverseOrder());
-        for (Integer integer : listForFifthTask) {
-            result.append(integer);
+    public static int getSumOfValuesInNumber(Integer number) {
+        int sum = 0;
+        while (number != 0) {
+            sum += (number % 10);
+            number /= 10;
         }
-        return result;
+        return sum;
     }
-    // Метод к задаче 9.
-    public static int[][] swappedArray(int[][] arr) {
-        int[][] swappedArray = new int[arr[0].length][arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                swappedArray[j][i] = swappedArray[i][j];
-            }
-        }
-        return swappedArray;
-    }
-    // Метод к задаче 10.
-    public static int getSumOfNumbersOfTwoDimensionalArray(int[][] twoDimensionalArray) {
-        int result = 0;
-        for (int i = 0; i < twoDimensionalArray.length; i++) {
-            for (int j = 0; j < twoDimensionalArray.length; j++) {
-                result += twoDimensionalArray[i][j];
-            }
-        }
-        return result;
-    }
-    // Метод к задаче 11.
-    public static boolean ifTwoDimensionalArrayIsSquared(int[][] twoDimensionalArray) {
-        for (int i = 0, l = twoDimensionalArray.length; i < l; i++) {
-            if (twoDimensionalArray[i].length != l) {
-                return false;
-            }
-        }
-        return true;
-    }
-    // Метод к задаче 12.
-    public static void getMultiplicationTable(int size) {
-        int counter = 1;
-        int multiplication = 1;
-        for (int i = counter; i <= size; i++) {
-            List<Integer> temp = new ArrayList<>();
-            for (int j = 1; j <= size; j++) {
-                temp.add(j * multiplication);
-
-            }
-            System.out.println(temp);
-            counter++;
-            multiplication++;
-
-        }
-    }
-    // Метод к задаче 13.
-    public static void getMinAndMaxValueFromTwoDimensionalArray(int[][] array) {
-        int min = array[0][0];
-        int max = array[0][0];
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                if (array[i][j] < min) {
-                    min = array[i][j];
-                }
-                if (array[i][j] > max) {
-                    max = array[i][j];
-                }
-            }
-        }
-        System.out.println("Максимальный элемент: " + max);
-        System.out.println("Минимальный элемент: " + min);
-    }
-
     public static void main(String[] args) {
-        // Массив и коллекция для решения задач. Оба имеют одинаковое содержимое.
-        int[] intArray = {1, 2, 3, 3, 2, 4, 5, 6};
-        List<Integer> integerArr = new ArrayList<>();
-        integerArr.add(1);
-        integerArr.add(2);
-        integerArr.add(3);
-        integerArr.add(3);
-        integerArr.add(2);
-        integerArr.add(4);
-        integerArr.add(5);
-        integerArr.add(6);
-
-        List<Integer> listForFifthTask = new ArrayList<>();
-        listForFifthTask.add(10);
-        listForFifthTask.add(50);
-        listForFifthTask.add(60);
-        listForFifthTask.add(70);
-        listForFifthTask.add(80);
-
-        int[][] twoDimensionalArray = { {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9} };
-
         // Задача 1.
-        double firstResult = getMean(intArray);
-        System.out.println(firstResult); // 3.25
+        getMinValue(1, 2, 3); // 1
         // Задача 2.
-        Set<Integer> secondResult = getDuplicates(integerArr);
-        System.out.println(secondResult); // [2, 3]
+        getAvg(1, 2, 3); // 2.0
         // Задача 3.
-        boolean thirdResult = checkSpecificNumber(integerArr, 6);
-        System.out.println(thirdResult);
+        getCountOfVowel("Привет, Мир!"); // 3
         // Задача 4.
-        getIndexOfSpecificNumber(intArray, 2); // вывод 1, 4 потому что в массиве 2 таких числа.
+        getCountOfWords("Здесь четыре обычных слова."); // 4
         // Задача 5.
-        List<Integer> fifthResult = getArray(listForFifthTask, 1, 3); //[50, 60, 70]
-        System.out.println(fifthResult);
+        getCountOfSpecificNumber(123123, '3'); // 2
         // Задача 6.
-        getMinAndMax(listForFifthTask); // Min element: 10, Max element: 80
+        getSquareOfRegularPentagon( 6); // 61.9371...
         // Задача 7.
-        getTwoMin(listForFifthTask); // First min element: 10, Second min element: 50
-        // Задача 8.
-        String eightResult = String.valueOf(getConcatenationOfCollectionNumbers(listForFifthTask));
-        System.out.println(eightResult); // Вывод: 80706050 В результате нету элемента 10, потому-что он был удален в методе 7.
-        // Задача 9.
-        swappedArray(twoDimensionalArray); // эту задачу я подсмотрел в интернете, сам не решил ;(
-        // Задача 10.
-        int tenthResult = getSumOfNumbersOfTwoDimensionalArray(twoDimensionalArray);
-        System.out.println(tenthResult); // 45
-        // Задача 11.
-        ifTwoDimensionalArrayIsSquared(twoDimensionalArray); // true
-        // Задача 12.
-        getMultiplicationTable(5); /* [1, 2, 3, 4, 5]
-                                           [2, 4, 6, 8, 10]
-                                           [3, 6, 9, 12, 15]
-                                           [4, 8, 12, 16, 20]
-                                           [5, 10, 15, 20, 25]
-                         */
-        // Задача 13.
-        getMinAndMaxValueFromTwoDimensionalArray(twoDimensionalArray); // Максимальный элемент: 9, Минимальный элемент: 1.
+        getSumOfValuesInNumber(232); // 7
 
     }
 }
