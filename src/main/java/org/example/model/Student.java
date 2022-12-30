@@ -1,26 +1,20 @@
 package org.example.model;
 
 public class Student {
-    public Student(Long id, String name, String surname, String address) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.address = address;
-    }
-
-    public Student() {
-    }
-
-    private Long id;
+    private int id;
     private String name;
-    private String surname;
-    private String address;
+    private int educationYear;
 
-    public Long getId() {
+    public Student(String name, int educationYear) {
+        this.name = name;
+        this.educationYear = educationYear;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -32,29 +26,11 @@ public class Student {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
+    public int getEducationYear() {
+        return educationYear;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+    public void setEducationYear(int educationYear) {
+        this.educationYear = educationYear;
     }
 }
