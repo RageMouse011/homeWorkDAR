@@ -1,36 +1,19 @@
 package org.example.model;
 
 public class Student {
-    private int id;
-    private String name;
-    private int educationYear;
+    private double grade;
+    private int age;
 
-    public Student(String name, int educationYear) {
-        this.name = name;
-        this.educationYear = educationYear;
+    public Student(double grade, int age) {
+        this.grade = grade;
+        this.age = age;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getEducationYear() {
-        return educationYear;
-    }
-
-    public void setEducationYear(int educationYear) {
-        this.educationYear = educationYear;
+    @Override
+    public String toString() {
+        return "Student{" +
+                "grade=" + grade +
+                ", age=" + age +
+                '}';
     }
 }
