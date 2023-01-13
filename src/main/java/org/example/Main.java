@@ -114,10 +114,16 @@ public class Main {
         System.out.println(strings); // [One, Five, Three]
 
         // 9.
-
+        LinkedList linkedList = new LinkedList();
+        linkedList.add(1);
+        linkedList.add(2);
+        System.out.println(linkedList.getFirst()); // 1
+        System.out.println(linkedList.getLast()); // 2
         // 10.
-
-        // 11.
+        for (int i = 0; i < linkedList.size(); i++) {
+            linkedList.set(i, Math.random());
+        }
+        System.out.println(linkedList);
 
         // 12.
         System.out.println(isMapEmpty(new HashMap<>())); // true
