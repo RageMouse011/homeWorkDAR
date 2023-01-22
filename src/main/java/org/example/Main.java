@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -99,6 +96,24 @@ public class Main {
         Arrays.sort(arr);
         return arr[arr.length - 2];
     }
+
+    // Метод к задаче Shuffle String.
+    public static String restoreString(String s, int[] indices) {
+        HashMap<Integer, Character> map = new HashMap<>();
+        String result = "";
+        char[] charArr = s.toCharArray();
+        for (int i = 0; i < indices.length; i++) {
+            map.put(indices[i], charArr[i]);
+        }
+        char[] chars = map.values().toString().toCharArray();
+        System.out.println(chars);
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] != '[' && chars[i] != ',' && chars[i] != ' ' && chars[i] != ']') {
+                result += chars[i];
+            }
+        }
+        return result;
+    }
     public static void main(String[] args) {
 
         // Задача 1.
@@ -123,5 +138,9 @@ public class Main {
         // Задача 8.
         int arr2[] = {123, 45, 6547, 3423, 131, 6575, 5867, 234};
         getSecondMaxValue(arr2); // 6547
+        // Задача Shuffle String.
+        String s = "codeleet";
+        int indices[] = {4, 5, 6, 7, 0, 2, 1, 3};
+        restoreString(s, indices); // leetcode принял мое решение. Можно написать куда чище.
     }
 }
