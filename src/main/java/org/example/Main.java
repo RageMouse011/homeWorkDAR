@@ -114,6 +114,48 @@ public class Main {
         }
         return result;
     }
+
+    // Метод к задаче Palindrome number
+    public static boolean isPalindrome(int x) {
+        if (x < 0) return false;
+
+        int reversedInt = 0, rem, input = x;
+        while(x != 0) {
+            rem = x % 10;
+            reversedInt = reversedInt * 10 + rem;
+            x /= 10;
+        }
+        return input == reversedInt;
+    }
+
+    // Метод к задаче Number of steps to reduce a number to zero
+    public static int numberOfSteps(int num) {
+        int counter = 0;
+        while (num > 0) {
+            if (num % 2 == 0) {
+                num /= 2;
+            } else {
+                num -= 1;
+            }
+            counter++;
+        }
+        return counter;
+    }
+
+    // Задача Check If Two String Arrays are Equivalent.
+    public static boolean arrayStringsAreEqual(String[] word1, String[] word2) {
+        StringBuilder str1 = new StringBuilder();
+        StringBuilder str2 = new StringBuilder();
+        for (int i = 0; i < word1.length; i++) {
+            str1.append(word1[i]);
+        }
+        for (int i = 0; i < word2.length; i++) {
+            str2.append(word2[i]);
+        }
+        return str1.toString().equals(str2.toString());
+    }
+
+
     public static void main(String[] args) {
 
         // Задача 1.
@@ -142,5 +184,11 @@ public class Main {
         String s = "codeleet";
         int indices[] = {4, 5, 6, 7, 0, 2, 1, 3};
         restoreString(s, indices); // leetcode принял мое решение. Можно написать куда чище.
+        // Задача Palindrome Number
+        isPalindrome(121);
+        // Задача Number of steps to reduce a number to zero
+        numberOfSteps(13);
+        // Задача Check If Two String Arrays are Equivalent.
+        arrayStringsAreEqual(new String[] {"abc", "eds"}, new String[] {"ab", "ceds"});
     }
 }
